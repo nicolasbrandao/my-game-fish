@@ -1,28 +1,28 @@
-"use client";
+"use client"
 
-import { LoginForm } from "@/components/auth/LoginForm/LoginForm";
-import { useAuth } from "@/hooks/useAuth";
-import { GalleryVerticalEnd } from "lucide-react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { LoginForm } from "@/components/auth/LoginForm/LoginForm"
+import { useAuth } from "@/hooks/useAuth"
+import { GalleryVerticalEnd } from "lucide-react"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { useEffect } from "react"
 
 export default function LoginPage() {
-	const { user, isLoading } = useAuth();
-	const router = useRouter();
+	const { user, isLoading } = useAuth()
+	const router = useRouter()
 
 	useEffect(() => {
 		if (!isLoading && user) {
-			router.push("/");
+			router.push("/")
 		}
-	}, [user, isLoading, router]);
+	}, [user, isLoading, router])
 
 	if (isLoading || (!isLoading && user)) {
 		return (
 			<div className="grid min-h-svh place-items-center">
 				<p>Loading...</p>
 			</div>
-		);
+		)
 	}
 
 	return (
@@ -46,10 +46,10 @@ export default function LoginPage() {
 				{/* eslint-disable-next-line @next/next/no-img-element */}
 				<img
 					src="/placeholder.svg"
-					alt="Image"
+					alt="placeholder"
 					className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
 				/>
 			</div>
 		</div>
-	);
+	)
 }

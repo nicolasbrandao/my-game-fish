@@ -1,28 +1,19 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from "@/components/ui/card";
-import { useAuth } from "@/hooks/useAuth";
-import { cn } from "@/lib/utils/cn"; // Ensure this path is correct as per your alias
-import { LogIn } from "lucide-react";
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { useAuth } from "@/hooks/useAuth"
+import { cn } from "@/lib/utils/cn" // Ensure this path is correct as per your alias
+import { LogIn } from "lucide-react"
 
-export function LoginForm({
-	className,
-	...props
-}: React.ComponentPropsWithoutRef<"div">) {
-	const { login, isLoading } = useAuth();
+export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRef<"div">) {
+	const { login, isLoading } = useAuth()
 
 	const handleGoogleLogin = () => {
 		if (!isLoading) {
-			login();
+			login()
 		}
-	};
+	}
 
 	return (
 		<div className={cn("flex flex-col gap-6", className)} {...props}>
@@ -31,9 +22,7 @@ export function LoginForm({
 					{" "}
 					{/* Centering header text */}
 					<CardTitle className="text-2xl">Welcome Back!</CardTitle>
-					<CardDescription>
-						Sign in or create an account with Google to continue.
-					</CardDescription>
+					<CardDescription>Sign in or create an account with Google to continue.</CardDescription>
 				</CardHeader>
 				<CardContent>
 					<div className="flex flex-col gap-4">
@@ -50,5 +39,5 @@ export function LoginForm({
 				</CardContent>
 			</Card>
 		</div>
-	);
+	)
 }

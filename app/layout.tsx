@@ -1,9 +1,9 @@
-import UnifiedProvider from "@/components/providers/UnifiedProvider";
+import UnifiedProvider from "@/components/providers/UnifiedProvider"
 
 export default async function RootLayout({
 	children,
 }: Readonly<{
-	children: React.ReactNode;
+	children: React.ReactNode
 }>) {
-	return <UnifiedProvider>{children}</UnifiedProvider>;
+	return <UnifiedProvider>{children}</UnifiedProvider>
 }
