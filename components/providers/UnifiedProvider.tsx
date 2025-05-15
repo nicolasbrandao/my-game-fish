@@ -1,9 +1,9 @@
-import "@/app/globals.css";
-import type { User } from "@/lib/types";
-import { getInitialUserSessionOnServer } from "@/lib/utils/auth/getInitialUserSessionOnServer";
-import { Geist, Geist_Mono } from "next/font/google";
-import { Toaster } from "../ui/sonner";
-import { AuthProvider } from "./AuthProvider";
+import "@/app/globals.css"
+import type { User } from "@/lib/types"
+import { getInitialUserSessionOnServer } from "@/lib/utils/auth/getInitialUserSessionOnServer"
+import { Geist, Geist_Mono } from "next/font/google"
+import { Toaster } from "../ui/sonner"
+import { AuthProvider } from "./AuthProvider"
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",

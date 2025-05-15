@@ -2,7 +2,8 @@
 
 import type { User } from "@/lib/types"
 import { useRouter } from "next/navigation"
-import { createContext, useCallback, useEffect, useState, type ReactNode } from "react"
+import { type ReactNode, createContext, useCallback, useEffect, useState } from "react"
+import { toast } from "sonner"
 
 interface AuthContextType {
 	user: User | null
@@ -49,6 +50,7 @@ export function AuthProvider({ children, initialUser }: AuthProviderProps) {
 				setUser(null)
 			}
 		} catch (error) {
+			console.error({ error })
 			setUser(null)
 		} finally {
 			setIsLoading(false)
@@ -78,14 +80,18 @@ export function AuthProvider({ children, initialUser }: AuthProviderProps) {
 				method: "POST",
 				credentials: "include",
 			})
-			if (response.ok) {
-				setUser(null)
-				router.push("/login")
-			} else {
-				setUser(null)
-				router.push("/login")
+
+			if (!response.ok) {
+				throw new Error(`Failed to logout. HTTP: ${response.status}`)
 			}
 		} catch (error) {
+			let displayMessage = "An unexpected error occurred during logout."
+
+			if (error instanceof Error) {
+				displayMessage = error.message
+			}
+
+			toast.error(displayMessage)
 			setUser(null)
 			router.push("/login")
 		} finally {
