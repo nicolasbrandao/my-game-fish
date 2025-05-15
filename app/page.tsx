@@ -2,18 +2,9 @@
 
 import { Button } from "@/components/ui/button"
 import { useAuth } from "@/hooks/useAuth"
-import { useRouter } from "next/navigation"
-import { useEffect } from "react"
 
 export default function HomePage() {
 	const { user, isLoading, logout } = useAuth()
-	const router = useRouter()
-
-	useEffect(() => {
-		if (!isLoading && !user) {
-			router.push("/login")
-		}
-	}, [user, isLoading, router])
 
 	if (isLoading || !user) {
 		return (

@@ -4,18 +4,9 @@ import { LoginForm } from "@/components/auth/LoginForm/LoginForm"
 import { useAuth } from "@/hooks/useAuth"
 import { GalleryVerticalEnd } from "lucide-react"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { useEffect } from "react"
 
 export default function LoginPage() {
 	const { user, isLoading } = useAuth()
-	const router = useRouter()
-
-	useEffect(() => {
-		if (!isLoading && user) {
-			router.push("/")
-		}
-	}, [user, isLoading, router])
 
 	if (isLoading || (!isLoading && user)) {
 		return (
